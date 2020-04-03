@@ -1,0 +1,481 @@
+************************
+*      SWIFT COURSE    *
+************************
+
+I. Variables and constants
+***************************
+
+var <name> = <value> 		#Sets a variable
+let <name> = <value>		#Sets a constant
+
+A constant cannot be modified once set
+
+
+II. Strings, Ints and Types
+***************************
+
+var <name> = "<value>"				#Sets a string type variable
+var <name> : String = "<value>"		#Sets a string type variable, specifying it by " : String"
+
+var <name> = <Number>				#Sets an Int type variable
+var <name> : Int = <Number>			#Sets an Int type variable, specifying it by " : Int"
+
+
+III. Comments and print
+************************
+Comments are stated by // or /* ... */
+e.g: 
+	- One line comment:
+		//Setting my_number variable  	or
+		var my_number = 13
+
+	- Several lines comment
+		/*
+		blabla blabla
+		blablabla
+		blablabla
+		*/
+
+To display something use the print() fonction
+	print(variable)
+	print(number)
+	print("text")
+
+
+IV. Math, Doubles and Floats
+*****************************
+
+Operations:
+	7 + 4
+	7 - 4
+	7 * 4
+	7 / 4 		(will return an error " operat / cannot be applied to Int type")
+	7.0 / 4.0 	(will return a Double)
+
+Floats are Doubles limited to 4 decimal
+e.g:
+	var weight : Float = 185.123456789123456789
+	// -> will return 185.1234 
+
+By default swift will set a number with decimals as a Double
+
+age * Int(weight) 	will return an Int
+Double(age)*weight	will return a Double
+
+
+V. Boolean and If Statements
+****************************
+
+	a. Boolean
+	-----------
+		Boolean is either "true" or "false"
+
+		e.g: var my_bool_var = true
+
+	b. Comparators
+	---------------
+
+		==		is equal to
+		!= 		is different from
+		>		is greater than
+		<		is lesser than
+		=>		is greater than or equal to
+		=<		is lesser than or equal to
+
+		a comparator returns a boolean
+
+	c. If statement
+	----------------
+		if my_var => 50 {
+		// runs the code here if true
+		}
+
+VI. Else, And, Or
+------------------
+	a. Else:
+	---------
+
+		if my_var => 50 {
+			// runs the code here if true
+		} else {
+			// runs this piece of code if not true
+		}
+
+	b. And (&&)
+	------------
+		if my_var => 50 && my_var =< 75 {
+			// runs this code if my_var is between 50 AND 75
+		}
+
+	c. Or (||)
+	-----------
+		if my_var => 50 || my_var =< 75 {
+			// runs this code if my var over 50 OR lesser 75
+		}
+
+VI. Array
+**********
+	
+	a. Arrays
+	----------
+
+	Array is a type made of other type
+	Array is a list of ordered things
+
+	var <array_name> = [<first item>, <second item>, <third item>]
+		e.g:
+			var films = ["Film1", "Film2", "Film3", "Film4"]
+			films[0] 	will return "Film1"
+			films[1] 	will return "Film2"
+			films[2] 	will return "Film3" etc...
+
+	In order to set an array of different types it has to be specified as:
+		var <array_name> : [All] = ["String", Int, Float(number), Double]
+		e.g:
+			var  mon_array : [Any] = ["Frédéric", 37, 1.65, Float(74.123456789), 75.123456789]
+
+	b. functions with Arrays
+	-------------------------
+		- Append:
+			films.append("Film5") will append "Film5" at the end of the array
+
+		- Insert:
+			films.insert("Film0", at: 0) will insert "Film0" at the first position of the array
+
+		- Remove:
+			films.remove(at: 0) will remove and return the first item from the array
+
+		-Count
+			films.count will return the number of items in the array
+
+VII. Loops
+***********
+	a. FOR loops
+	------------
+	e.g.1:
+		for x in 1...10 {
+			print(x)
+		}
+
+	e.g.2:	
+		let movies = ["film1", "film2", "film3", "film4"]
+		for film in movies {
+				print(film)
+			}
+
+	e.g.3:
+		for x in 0..<movies.count {
+			print("\(x+1). \(movies[x])")
+		}
+
+	**** NOTE1: for x in 1..<10  equals to for x in 1...9 ****
+	**** NOTE2: String formating uses \(<var_name>) to display variable content
+
+	Example:
+	// CREATING RANDOM NUMBERS
+
+	var str = "["
+		for _ in 1...1_000 {
+    		str += "\(Int.random(in: 0...10_000)),"
+		}
+
+		str += "]"
+
+	print(str)
+
+VIII. Tuples and Sets
+**********************
+
+	a. Tuples
+	----------
+	A tuple is a set of 2 values
+
+		var <TupleName> = (<value1>,<value2>)
+	or	var <TupleName> : (<value1 type>, <value2 type>) = (<value1>,<value2>)
+	
+		dog.0 		//-> 		returns 1st item
+		dog.1 		//->		returns2nd item
+
+	b. Sets
+	--------
+	The set is a list of unique elements
+	The set is not ordered, there is no index
+	e.g:
+		var numbers = [1,2,3,3,2,1]			//-> will create the array [1,2,3,3,2,1]
+		var numbers : Set = [1,2,3,3,2,1]	//-> will create the set [2,1,3] (unordered)
+
+	As a set is unordered :
+		<SetName>[0] will return an error because a set has no index
+
+		- Set functions:
+			. <SetName>.contains(element) 	//-> returns true or false
+			. <SetName>.contains(element)	//-> returns a tuple (insertion state boolean, value inserted) 
+
+VIII. Dictionaries
+*******************
+
+list of "key : value" pairs (tuples)
+A dictionary is unordered
+
+!!! Keys have to be unique !!!
+
+	var <dictName> = [key1:value1, key2:value2,etc... ]
+	var <dictName> : [Keys type:Values type ] = [key1:value1, key2:value2,etc... ]
+
+	<dictName>[key1]									//->	will return value1
+	<dictName>[New Key]	= value 						//->	will add (New Key:value) to the dictionary
+	<dictName>[Existing Key] = new value 				//->	will update the value of <Existing Key>
+	<dictName>.removeValue(forKey: <Existing Key>)		//->  will remove (ExistingKey:Value) from dictionary
+
+	e.g 
+		var dog = ["Fido":5, "Jane":8, "Sean":4]
+		dog["Jane"] returns 8
+
+IX. Functions
+**************
+	Function is a name for a chunk of code
+
+	- We set a function as followed
+		func functionName(){
+			<code to execute>
+		}
+
+	- We call a fuction by its name
+		functionName()
+
+	- A fonction can take parameters
+		func functionName(param1Name : param1Type, param2Name : param2Type,...)
+
+		e.g.:
+			func addTwoNumbers(num1 : Int, num2 : Int){
+				print(num1 + num2)
+			}
+
+			addTwoNumbers(num1: 2, num2: 5) 			//-> will print 7
+
+	- A function can return back information:
+		e.g.:
+			func addTwoNumbers(num1 : Int, num2 : Int) -> Int{
+				return(num1 + num2)
+			}
+
+			addTwoNumbers(num1: 2, num2: 5) 			//-> will return 7
+			print(addTwoNumbers(num1: 2, num2: 5))		//-> will print 7
+
+			!!! A function can only return 1 thing at a time (Int, String, Array, Tuple, Set, Dictionnary) !!!
+			you can't set 2 items to be returned:
+			func addTwoNumbers(num1 : Int, num2 : Int) -> Int, string{			//-> will return an error
+				return(num1 + num2)
+				return("comes from \(num1) + \(num2)") 		
+			}
+
+IX. Optionals
+**************
+Optional is the way to say : "This is either an object or it's nothing"
+
+Syntaxe:
+	var <varName> : <varType>? = <value>		//-> returns Optional(<value>)
+e.g:
+	var age : Int? = 42							//-> returns Optional(42)
+	var name : String? = "Frédéric"				//-> returns Optional("Frédéric")
+	var age : Int? = nil 						//-> returns nil
+
+In order to remove the Optional type we use:
+	<varName>!
+	e.g:
+		var age : Int? = 42
+		print(age)				//-> prints: Optional(42)
+		print(age!)				//-> prints: 42
+
+	But careful because it can make the app crash (shut down) if erroneous
+	e.g:
+		var age : Int? = "Quatre Deux"
+		print(age!)				//-> Will generate an error and close the app
+
+	In order to avoid this we do:
+		if age != nil{
+			print(age!)
+		}
+
+	or as well (better):
+		if let ageGiven = age{
+			print(ageGiven)
+		}
+
+X. Classes
+***********
+Classes are blueprints used to create objects.
+Classes can contain properties or functions
+
+	class Dog{
+		var name = ""
+		var age = 0
+		var furColor = ""
+
+		func bark(){
+			print("Woof! My name is \(name) and I am \(age) years old")
+		}
+	}
+
+	var myDog = Dog()
+	print (myDog.age)		//-> returns 0
+
+	myDog.age = 8
+	myDog.name = "Fido"
+	print (myDog.age)		//-> returns 8
+
+	var dog2 = Dog()
+	dog2.age = 12
+	dog2.name = "Rex"
+
+ 	print (myDog.age)		//-> returns 8
+	print (dog2.age)		//-> returns 12
+
+	myDog.bark				//-> prints Woof! My name is Fido and I am 8 years old
+	dog2.bark()				//-> prints Woof! My name is Fido and I am 8 years old
+
+XI. Structs
+************
+
+	Very similar to a class.
+	But structs are value types whereas classes are reference types
+	When you copy a struct, you end up with two unique copies of the data. When you copy a class, you end up with two references to one instance of the data.
+
+	Let’s take a look at an example:
+
+    	* Reference Type: Bob has a phone number. He gives it to Alice. Alice doesn’t write down the phone number for herself, but instead remembers that Bob has it. When she needs the phone number, she asks Bob. When Alice accidentally changes one digit of the phone number, Bob’s phone number changes too. Picture this as Bob and Alice both holding the piece of paper the phone number is written on.
+    
+    	* Value Type: Bob has a phone number, and he gives it to Alice. Alice writes it down and now has her own copy. When she accidentally changes it, only her copy changes, and not the original phone number Bob has. Both Bob and Alice have their unique copy of the phone number.
+
+  	By default we should use structs unless we need the specific feature of a class such as :
+
+    	* Classes can inherit from another class, which you can’t do with structs. With classes, you can write class MyViewController : UIViewController to create a subclass of UIViewController. Conversely, structs can implement protocols.
+	
+	    * Classes can be deinitialized, i.e. they can implement a deinit function, and you can make one or more references to the same class (i.e., classes are a reference type).
+
+    	* Classes come with the built-in notion of identity, because they’re reference types. With the identity operator === you can check if two references (variables, constants, properties, etc.) refer to the same object.
+
+    Let's build a struct:
+
+    	struct Dog {
+			var name : String
+			var age : Int
+			var furColor : String
+
+			func bark(){
+				print("Woof! My name is \(name) and I am \(age) years old")
+			}
+		}
+
+		var myDog = Dog(name: "fido", age: 7, furColor: "Black")
+		myDog.bark()
+
+With struct we are no longer obliged to set a default value to the struct proprieties.
+Trying to create an instance of a struct without passing argument will result on an error.
+	e.g: 
+		var myDog = Dog()			-> will return an error if no default value have been set
+
+
+In a struct even if the object is a constant, we can change the default value:
+		struct Dog{
+			var name = ""
+			var age = 0
+			var furColor = ""
+
+			func bark(){
+				print("Woof! My name is \(name) and I am \(age) years old")
+			}
+		}
+
+		let myDog = Dog() 		//Setting up a constant
+		myDog.age = 5			-> will not return an error when using a struct
+		
+XII. Enums
+***********
+	enums are a type
+
+	enum Compass {
+		case north
+		case south
+		case east
+		case west
+	}
+
+	var direction = Compass.north				//direction holds then the value of north
+or	
+	var direction : Compass = Compass.north		//direction holds then the value of north
+or
+	var direction : Compass = .north			//direction holds then the value of north
+
+Example of using an enum:
+	
+	func getDirections(whichWay : Compass) {
+		if whichWay == .east{
+			print ("turn right")
+		}
+	}
+
+	getDirections (whichWay : .east)
+
+Another example:
+			enum FurColor{
+				case Black
+				case Brown
+				case White
+				Case Golden
+			}
+
+	    	struct Dog {
+				var name : String
+				var age : Int
+				var furColor : String
+
+				func bark(){
+					print("Woof! My name is \(name) and I am \(age) years old")
+				}
+			}
+
+			Dog(age: 8, name: "Fido", furColor: .Golden)
+
+			// In that specific case it limits and lock the option for the furColor parameter.
+
+XIII. Switches
+***************
+
+Close to the "if" statement.
+
+	var age = 30
+
+	switch age{
+		case 0...12:
+			print("child")
+		case 13...18:
+			print("adolescent")
+		default:
+			print ("something else")	 
+	}
+
+Switches makes a lot of sens with enums:
+		
+		func getDirections(whichWay : Compass) {
+			switch whichWay {
+			case .north:
+				print ("TurnUp!")
+			case .south:
+				 print ("Turn turn down for what!")
+			case .east:
+				print ("Turn Right!")
+			case .west:
+				print ("Turn left!")				
+
+			}
+		}
+
+		getDirections (whichWay : .east)			//-> will display "Turn Right!"
+
+If you use an enum you have to adress every situation though.
+
+*********************
+* Coding project 2: *
+*********************
+
